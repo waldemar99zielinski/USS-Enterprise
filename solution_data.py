@@ -1,14 +1,17 @@
 import math
 
-class solution_instance:
-    order = []
-    fitness = math.inf
 
+class SolutionInstance:
 
-def calculate_fitness(solution):
-    result = 0
-    n = len(solution.order)
-    for x in solution.order:
-        result += (n*x)
-        n = n - 1
-    return result
+    def __init__(self, order):
+
+        self.order = order
+        self.fitness = self.calculate_fitness(self.order)
+
+    def calculate_fitness(self, order):
+        result = 0
+        n = len(self.order)
+        for x in self.order:
+            result += (n*x)
+            n = n - 1
+        return result

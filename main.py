@@ -1,8 +1,7 @@
 from solution_data import *
 
-test = solution_instance()
-test.order = [4, 2, 6]
+order = [4, 2, 6]
+test = SolutionInstance(order)
 
-test.fitness = calculate_fitness(test)
 
 print(test.fitness)
