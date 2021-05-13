@@ -1,4 +1,3 @@
-# For implementing solution data structures and fitness function
 import math
 
 class solution_instance:
