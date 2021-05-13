@@ -1,6 +1,6 @@
-import solution_data
+from solution_data import *
 
-test = solution_data()
+test = solution_instance()
 test.order = [4, 2, 6]
 
 test.fitness = calculate_fitness(test)
