@@ -2,7 +2,7 @@ from randomization import *
 from solution_data import *
 
 
-# expects a single object of type solution_instance
+# expects a single object of type SolutionInstance
 # if specimen.order has at least 2 elements, the function chooses 2 randomly and swaps their places
 def mutate(specimen):
     size = len(specimen.order)

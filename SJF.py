@@ -1,7 +1,8 @@
 from solution_data import *
 
-# expects a single object of type solution_instance
+# expects a single object of type SolutionInstance
 # sorts its order field and calculates fitness
 def shortest_job_first(source):
     source.order.sort()
-    source.fitness = calculate_fitness(source)
+    source.fitness = source.calculate_fitness()
+

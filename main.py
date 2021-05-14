@@ -7,11 +7,11 @@ from evolution_replacement import *
 
 seed = initialize_rng()
 
-x1 = solution_instance()
-x2 = solution_instance()
-x3 = solution_instance()
-x4 = solution_instance()
-x5 = solution_instance()
+x1 = SolutionInstance()
+x2 = SolutionInstance()
+x3 = SolutionInstance()
+x4 = SolutionInstance()
+x5 = SolutionInstance()
 
 
 x1.fitness = 1

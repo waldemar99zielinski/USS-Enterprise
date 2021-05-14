@@ -14,7 +14,7 @@ def most_fit(specimens, slots):
 # Returns winners of the tournament
 # each round has only one winner, determined by fitness
 # slots is the number of rounds (and also the number of returned elements)
-# specimens is a list of solution_instance objects
+# specimens is a list of SolutionInstance objects
 # bracket_size is the number of specimens selected to compete in a single round
 def tournament(specimens, slots, bracket_size):
     results = []
