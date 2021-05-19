@@ -9,9 +9,14 @@ def initialize_rng(seed=time.time()):
     return seed
 
 
-# random number from 1 to n (inclusive)
+# random int number from 1 to n (inclusive)
 def generate_random_from_range(n):
     return random.randint(1, n)
+
+
+# random number (0;1) for probability
+def generate_probability():
+    return random.uniform(0, 1)
 
 
 # returns n randomly selected elements from source (no duplicates)

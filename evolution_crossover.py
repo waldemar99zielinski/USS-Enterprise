@@ -1,29 +1,31 @@
 # For implementing crossover
 # 1. function for crossover: takes two solution_instance
-import random
+from randomization import *
+from solution_data import *
 
 
-def order_crossover(solution_instance1, solution_instance2):
-    random.seed(101)
+# takes array of 2 solutions and returns solution with their crossed genome order
+def order_crossover(solutions):
+    solution_instance1 = solutions[0]
+    solution_instance2 = solutions[1]
     # order for each solution has the same length
-    matchingSectionIndex = random.randrange(len(solution_instance1.order))
-
+    matching_section_index = generate_random_from_range(len(solution_instance1.order))
+    #print("index: ",matching_section_index)
     # unchanged part of solution
-    crossedSolutionOrder = solution_instance1.order[:matchingSectionIndex]
+    crossed_solution_order = solution_instance1.order[:matching_section_index]
 
-    missingSolutionPartOrder = []
-    for s in range(matchingSectionIndex, len(solution_instance1.order)):
+    missing_solution_part_order = []
+    for s in range(matching_section_index, len(solution_instance1.order)):
         index = solution_instance2.order.index(solution_instance1.order[s])
 
         # populate array with pair index, time
-        missingSolutionPartOrder.append((index, solution_instance1.order[s]))
+        missing_solution_part_order.append((index, solution_instance1.order[s]))
 
-    missingSolutionPartOrder.sort()
+    missing_solution_part_order.sort()
 
     # crossed part of the solution
-    for s in missingSolutionPartOrder:
+    for s in missing_solution_part_order:
         # append missing values to final crossover solution
-        crossedSolutionOrder.append(s[1])
+        crossed_solution_order.append(s[1])
 
-    return crossedSolutionOrder
-# 2. function for whole population
+    return SolutionInstance(crossed_solution_order)

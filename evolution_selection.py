@@ -9,11 +9,11 @@ from randomization import *
 # bracket_size is the number of specimens selected to compete in a single round
 
 
-def tournament(specimens, slots, bracket_size):
+def selection_tournament(specimens, slots, bracket_size):
     results = []
     if bracket_size > len(specimens):
         raise Exception("Error in tournament - bracket_size must be smaller than the number of specimens")
-        return results
+
     for x in range(slots):
         results.append(sort_solutions(select_from_list(specimens, bracket_size))[0])
     return results
