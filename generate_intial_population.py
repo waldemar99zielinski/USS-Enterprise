@@ -6,12 +6,17 @@ from randomization import *
 # returns population of solutions that consists number_of_species, each with number_of_crewmates
 # max_cost defines maximum time to serve a crewmate
 # allows multiple species with same order
-def generate_initial_population(number_of_species, number_of_crewmates, max_cost, mutation_range):
+def generate_init_population(number_of_species, number_of_crewmates, max_cost, mutation_range):
     initial_population = []
     init_specie = SolutionInstance(generate_crewmates(number_of_crewmates, max_cost))
     for _ in range(number_of_species):
-        specie = mutate(init_specie, mutation_range)
+        specie = SolutionInstance(mutate(init_specie, mutation_range).order)
         initial_population.append(specie)
-        print(specie.order)
+        # #specie.calculate_fitness
+        # print(specie.order, specie.fitness, id(specie))
     return initial_population
 
+
+# init_pop = generate_init_population(10, 10, 100, 2)
+# for s in init_pop:
+#     print(s.order, s.fitness)
