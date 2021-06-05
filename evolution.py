@@ -5,6 +5,7 @@ from randomization import *
 from evolution_selection import *
 from evolution_crossover import *
 from evolution_mutation import *
+
 GENERATIONS = 100
 
 def evolutionary_algorithm(init_population, generations, kids_per_generation,crossover_probability):
