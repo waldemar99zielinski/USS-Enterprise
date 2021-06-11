@@ -5,7 +5,8 @@ from random_generation import *
 from evolution_mutation import *
 from evolution_replacement import *
 from randomization import *
-
+from user_interface import *
+from file_access import *
 
 #
 # seed = initialize_rng()
@@ -31,5 +32,11 @@ from randomization import *
 #
 # for x in range(len(test2)):
 #     print(test2[x].fitness)
+
+
+
+# x = read_crewmates_from_file("test.txt")
+
+# print(x)
 
 
