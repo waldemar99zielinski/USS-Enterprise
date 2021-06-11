@@ -8,12 +8,12 @@ from randomization import *
 # allows multiple species with same order
 def generate_init_population(number_of_species, number_of_crewmates, max_cost, mutation_range):
     initial_population = []
-    init_specie = SolutionInstance(generate_crewmates(number_of_crewmates, max_cost))
+    init_species = SolutionInstance(generate_crewmates(number_of_crewmates, max_cost))
     for _ in range(number_of_species):
-        specie = SolutionInstance(mutate(init_specie, mutation_range).order)
-        initial_population.append(specie)
-        # #specie.calculate_fitness
-        # print(specie.order, specie.fitness, id(specie))
+        species = SolutionInstance(mutate(init_species, mutation_range).order)
+        initial_population.append(species)
+        # #species.calculate_fitness
+        # print(species.order, species.fitness, id(species))
     return initial_population
 
 
