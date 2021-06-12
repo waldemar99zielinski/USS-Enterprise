@@ -31,3 +31,11 @@ def sort_solutions(source):
     staging = source.copy()
     staging.sort(key=sorting_function)
     return staging
+
+# returns list of solutions fitness for population
+def getSolutionsListFitness(population):
+    list = []
+    for speciment in population:
+        list.append(speciment.fitness)
+
+    return list
