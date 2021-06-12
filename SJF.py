@@ -4,5 +4,5 @@ from solution_data import *
 # sorts its order field and calculates fitness
 def shortest_job_first(source):
     source.order.sort()
-    source.fitness = source.calculate_fitness()
-
+    source.calculate_fitness()
+    return source.fitness

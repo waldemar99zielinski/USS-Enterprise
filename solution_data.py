@@ -8,15 +8,16 @@ class SolutionInstance:
     def __init__(self, order):
 
         self.order = order
-        self.fitness = self.calculate_fitness(self.order)
+        self.fitness = self.calculate_fitness()
 
     # calculates and returns fitness (does not modify object)
-    def calculate_fitness(self, order):
+    def calculate_fitness(self):
         result = 0
         n = len(self.order)
         for x in self.order:
             result += (n*x)
             n = n - 1
+        self.fitness = result
         return result
 
 
