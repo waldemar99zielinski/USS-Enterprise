@@ -6,6 +6,7 @@
 # population_generation_mode    -   if "random", crewmate values generated randomly. Otherwise holds filename.
 # maximum_crewmate_cost         -   upper bound on integer value of any given crewmate
 # rng_seed                      -   if "default", do not provide a seed. Otherwise holds provided seed.
+# mutation_range                -   how drastic is the mutation - number of pair swaps performed
 class UserParameters:
 
     def __init__(self):
@@ -15,6 +16,7 @@ class UserParameters:
         self.population_generation_mode = "random"
         self.maximum_crewmate_cost = 1
         self.rng_seed = "default"
+        self.mutation_range = 1
 
 
 # reads user parameters
@@ -53,6 +55,15 @@ def take_user_parameters():
                 break
             except ValueError:
                 print("Please enter a positive integer: ")
+
+
+    while True:
+        try:
+            staging.mutation_range = int(input("Enter mutation severity: "))
+            break
+        except ValueError:
+            print("Please enter a positive integer: ")
+
 
     return staging
 
