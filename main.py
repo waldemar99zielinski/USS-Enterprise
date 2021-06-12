@@ -7,42 +7,26 @@ from evolution_replacement import *
 from randomization import *
 from user_interface import *
 from file_access import *
-
-#
-# seed = initialize_rng()
-#
-# x1 = SolutionInstance([])
-# x2 = SolutionInstance([])
-# x3 = SolutionInstance([])
-# x4 = SolutionInstance([])
-# x5 = SolutionInstance([])
-#
-#
-# x1.fitness = 1
-# x2.fitness = 2
-# x3.fitness = 3
-# x4.fitness = 4
-# x5.fitness = 5
-#
-#
-# test = [x4, x3, x1, x5, x2]
-#
-# test2 = tournament(test, 3, 2)
-#
-#
-# for x in range(len(test2)):
-#     print(test2[x].fitness)
+from generate_intial_population import *
+from evolution import *
 
 
+user_params = take_user_parameters()
+if user_params.rng_seed == "default":
+    initialize_rng()
+else:
+    initialize_rng(user_params.rng_seed)
 
-# x = read_crewmates_from_file("test.txt")
+if user_params.population_generation_mode != "random":
+    list_from_file = read_crewmates_from_file(user_params.population_generation_mode)
+    progenitor = SolutionInstance(list_from_file)
+    starting_population = generate_population_from_progenitor(user_params.population_size, user_params.number_of_crewmates, user_params.maximum_crewmate_cost, user_params.number_of_crewmates, progenitor)
+else:
+    starting_population = generate_init_population(user_params.population_size, user_params.number_of_crewmates, user_params.maximum_crewmate_cost, user_params.number_of_crewmates)
+    progenitor = starting_population[0]
 
-# print(x)
+SJF_result = shortest_job_first(progenitor)
 
+EVO_result = evolutionary_algorithm(starting_population, user_params.generation_limit, user_params.kids_per_generation, user_params.crossover_probability, user_params.mutation_range)
 
-x1 = SolutionInstance([])
-x1.fitness = 1
-
-x2 = [[2, 3], [3, 4]]
-
-display_results(x1, x2)
+display_results(SJF_result, EVO_result)

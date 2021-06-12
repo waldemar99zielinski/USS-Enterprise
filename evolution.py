@@ -46,18 +46,18 @@ def evolutionary_algorithm(init_population, generation_limit, kids_per_generatio
 # -------------------------------------------------------------------------------
 
 #initialize_rng(5) #190
-initialize_rng(555)
-init_pop = generate_init_population(10, 100, 100, 5)
+#initialize_rng(555)
+#init_pop = generate_init_population(10, 100, 100, 5)
 
 
 
 # for s in init_pop:
 #     print(s.order, s.fitness)
-log = evolutionary_algorithm(init_pop, 1000, 100, 0.5, 2)
+#log = evolutionary_algorithm(init_pop, 1000, 100, 0.5, 2)
 
-print(len(log),log)
+#print(len(log),log)
 
 # get_fitness_scatter_plot(log)
-get_fitness_average_scatter_plot(log)
+#get_fitness_average_scatter_plot(log)
 
-print(shortest_job_first(init_pop[0]))
+#print(shortest_job_first(init_pop[0]))

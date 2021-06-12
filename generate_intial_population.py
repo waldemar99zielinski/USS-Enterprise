@@ -13,11 +13,18 @@ def generate_init_population(number_of_species, number_of_crewmates, max_cost, m
     for _ in range(number_of_species):
         species = SolutionInstance(mutate(init_species, mutation_range).order)
         initial_population.append(species)
-        # #species.calculate_fitness
-        # print(species.order, species.fitness, id(species))
     return initial_population
 
 
-# init_pop = generate_init_population(10, 10, 100, 2)
-# for s in init_pop:
-#     print(s.order, s.fitness)
+# returns population of solutions that consists number_of_species, each with number_of_crewmates
+# max_cost defines maximum time to serve a crewmate
+# allows multiple species with same order
+# population consists of progenitor and his mutants
+def generate_population_from_progenitor(number_of_species, number_of_crewmates, max_cost, mutation_range, progenitor):
+    initial_population = []
+    init_species = progenitor
+    initial_population.append(init_species)
+    for _ in range(number_of_species-1):
+        species = SolutionInstance(mutate(init_species, mutation_range).order)
+        initial_population.append(species)
+    return initial_population

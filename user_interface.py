@@ -80,10 +80,10 @@ def take_user_parameters():
 
     while True:
         try:
-            staging.crossover_probability = int(input("Enter crossover probability: "))
+            staging.crossover_probability = float(input("Enter crossover probability: "))
             break
         except ValueError:
-            print("Please enter a positive integer: ")
+            print("Please enter a number between 0 and 1: ")
 
     while True:
         try:
@@ -97,10 +97,9 @@ def take_user_parameters():
 
 
 # display results and percent comparison
-# sjf_solution              -   object of type SolutionInstance, returned by sjf
+# sjf_value              -   service time of solution, returned by SJF
 # evolution_solution        -   expects fitness_log returned by evolutionary algorithm
-def display_results(sjf_solution, evolution_solution):
-    sjf_value = sjf_solution.fitness
+def display_results(sjf_value, evolution_solution):
     last_pop = evolution_solution[-1]
     last_pop.sort()
     evo_value = last_pop[-1]
