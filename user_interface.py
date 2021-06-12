@@ -77,5 +77,20 @@ def take_user_parameters():
 
     return staging
 
-def display_results():
-    pass
+
+# display results and percent comparison
+# sjf_solution              -   object of type SolutionInstance, returned by sjf
+# evolution_solution        -   expects fitness_log returned by evolutionary algorithm
+def display_results(sjf_solution, evolution_solution):
+    sjf_value = sjf_solution.fitness
+    last_pop = evolution_solution[-1]
+    last_pop.sort()
+    evo_value = last_pop[-1]
+    solution_ratio = (((evo_value/sjf_value)-1)*100)
+    print("Service time of SJF result:", end=" ")
+    print(sjf_value)
+    print("Service time of evolutionary result:", end=" ")
+    print(evo_value)
+    print("Evolutionary result time is", end=" ")
+    print(solution_ratio, end='')
+    print("% longer than SJF result.")

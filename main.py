@@ -40,3 +40,9 @@ from file_access import *
 # print(x)
 
 
+x1 = SolutionInstance([])
+x1.fitness = 1
+
+x2 = [[2, 3], [3, 4]]
+
+display_results(x1, x2)
