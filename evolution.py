@@ -9,6 +9,7 @@ from evolution_replacement import *
 from generate_intial_population import *
 from randomization import  *
 from solution_data import getSolutionsListFitness
+from plots import get_fitness_scatter_plot
 
 GENERATIONS = 100
 
@@ -44,7 +45,9 @@ initialize_rng(5)
 init_pop = generate_init_population(10, 10, 100, 5)
 # for s in init_pop:
 #     print(s.order, s.fitness)
-log = evolutionary_algorithm(init_pop, 1000, 5, 0.5)
+log = evolutionary_algorithm(init_pop, 10, 1, 0.2)
 
 print(len(log),log)
+
+get_fitness_scatter_plot(log)
 

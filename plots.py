@@ -13,10 +13,12 @@ def get_fitness_scatter_plot(log):
             x.append(x_counter)
             y.append(fitness)
         x_counter += 1
-    plt.scatter(x, y)
+    s = 10000/len(x)
+
+
+    plt.scatter(x, y, s)
     plt.show()
 
-get_fitness_scatter_plot(xd)
 
 
 
