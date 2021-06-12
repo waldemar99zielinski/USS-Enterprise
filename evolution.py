@@ -13,13 +13,15 @@ from plots import *
 from SJF import shortest_job_first
 
 
-def evolutionary_algorithm(init_population, generations, kids_per_generation, crossover_probability, mutation_range):
+
+def evolutionary_algorithm(init_population, generation_limit, kids_per_generation, crossover_probability, mutation_range):
+
 
     population = init_population
     kids = []
     fitness_log = []
     fitness_log.append(getSolutionsListFitness(init_population))
-    for x in range(generations):
+    for x in range(generation_limit):
         # print("GENERATION: ", x)
         for _ in range(kids_per_generation):
             child = None
@@ -31,7 +33,6 @@ def evolutionary_algorithm(init_population, generations, kids_per_generation, cr
             kids.append(child)
         population = population + kids
         kids=[]
-
         population = most_fit(population, len(init_population[0].order))
         fitness_log.append(getSolutionsListFitness(population))
 
@@ -41,10 +42,15 @@ def evolutionary_algorithm(init_population, generations, kids_per_generation, cr
     return fitness_log
 
 
+# move later
+# -------------------------------------------------------------------------------
 
 #initialize_rng(5) #190
 initialize_rng(555)
 init_pop = generate_init_population(10, 100, 100, 5)
+
+
+
 # for s in init_pop:
 #     print(s.order, s.fitness)
 log = evolutionary_algorithm(init_pop, 1000, 100, 0.5, 2)
