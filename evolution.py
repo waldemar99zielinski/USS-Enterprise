@@ -30,8 +30,8 @@ def evolutionary_algorithm(init_population, generations, kids_per_generation, cr
             kids.append(child)
         population = population + kids
         kids=[]
-        fitness_log.append(getSolutionsListFitness(population))
         population = most_fit(population, len(init_population[0].order))
+        fitness_log.append(getSolutionsListFitness(population))
 
         # for s in population:
         #     print(s.order, s.fitness)

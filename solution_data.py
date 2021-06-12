@@ -35,7 +35,7 @@ def sort_solutions(source):
 # returns list of solutions fitness for population
 def getSolutionsListFitness(population):
     list = []
-    for speciment in population:
-        list.append(speciment.fitness)
+    for specimen in population:
+        list.append(specimen.fitness)
 
     return list
