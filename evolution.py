@@ -11,7 +11,6 @@ from randomization import  *
 from solution_data import getSolutionsListFitness
 from plots import get_fitness_scatter_plot
 
-GENERATIONS = 100
 
 def evolutionary_algorithm(init_population, generations, kids_per_generation,crossover_probability):
 
@@ -41,6 +40,8 @@ def evolutionary_algorithm(init_population, generations, kids_per_generation,cro
 
 
 
+# move later
+# -------------------------------------------------------------------------------
 initialize_rng(5)
 init_pop = generate_init_population(10, 10, 100, 5)
 # for s in init_pop:

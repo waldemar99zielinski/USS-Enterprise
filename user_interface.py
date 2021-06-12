@@ -7,6 +7,7 @@
 # maximum_crewmate_cost         -   upper bound on integer value of any given crewmate
 # rng_seed                      -   if "default", do not provide a seed. Otherwise holds provided seed.
 # mutation_range                -   how drastic is the mutation - number of pair swaps performed
+# generation_limit              -   how many generations of evolution to perform
 class UserParameters:
 
     def __init__(self):
@@ -17,6 +18,7 @@ class UserParameters:
         self.maximum_crewmate_cost = 1
         self.rng_seed = "default"
         self.mutation_range = 1
+        self.generation_limit = 100
 
 
 # reads user parameters
@@ -60,6 +62,14 @@ def take_user_parameters():
     while True:
         try:
             staging.mutation_range = int(input("Enter mutation severity: "))
+            break
+        except ValueError:
+            print("Please enter a positive integer: ")
+
+
+    while True:
+        try:
+            staging.generation_limit = int(input("Enter generation limit: "))
             break
         except ValueError:
             print("Please enter a positive integer: ")
