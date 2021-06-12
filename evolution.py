@@ -12,7 +12,7 @@ from solution_data import getSolutionsListFitness
 from plots import get_fitness_scatter_plot
 
 
-def evolutionary_algorithm(init_population, generations, kids_per_generation,crossover_probability):
+def evolutionary_algorithm(init_population, generations, kids_per_generation, crossover_probability):
 
     population = init_population
     kids =[]
