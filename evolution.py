@@ -13,11 +13,7 @@ from population_comparison import are_populations_the_same
 from plots import *
 
 
-
-
 def evolutionary_algorithm(init_population, generation_limit, kids_per_generation, crossover_probability, mutation_range):
-
-
     population = init_population
     kids = []
     fitness_log = []
@@ -37,13 +33,11 @@ def evolutionary_algorithm(init_population, generation_limit, kids_per_generatio
         population = most_fit(population, len(init_population[0].order))
         fitness_log.append(getSolutionsListFitness(population))
 
-
-
     return fitness_log
 
-#generation_limit: stop algorithm if no changes in population within generation_limit
-def evolutionary_algorithm_stop(init_population, generation_limit, kids_per_generation, crossover_probability,
-                           mutation_range):
+
+# generation_limit: stop algorithm if no changes in population within generation_limit
+def evolutionary_algorithm_stop(init_population, generation_limit, kids_per_generation, crossover_probability, mutation_range):
     population = init_population
     kids = []
     fitness_log = []
@@ -73,6 +67,12 @@ def evolutionary_algorithm_stop(init_population, generation_limit, kids_per_gene
         fitness_log.append(getSolutionsListFitness(population))
 
     return fitness_log
+
+
+
+
+
+
 # move later
 # -------------------------------------------------------------------------------
 
