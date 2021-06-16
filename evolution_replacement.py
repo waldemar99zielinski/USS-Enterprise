@@ -9,3 +9,4 @@ def most_fit(specimens, slots):
     staging = sort_solutions(specimens)
     staging = staging[:slots]
     return staging
+

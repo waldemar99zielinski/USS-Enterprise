@@ -32,7 +32,7 @@ def evolutionary_algorithm(init_population, generation_limit, kids_per_generatio
                 child = mutate(selection_tournament(population, 1, 5)[0], mutation_range)
             kids.append(child)
         population = population + kids
-        kids=[]
+        kids = []
         population = most_fit(population, len(init_population[0].order))
         fitness_log.append(getSolutionsListFitness(population))
 

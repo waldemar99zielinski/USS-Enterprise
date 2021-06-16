@@ -19,8 +19,9 @@ class ReplacementTest(unittest.TestCase):
         solution1d = SolutionInstance(order1d)
         population = [solution1a, solution1b, solution1c, solution1d]
 
-        print(solution1a.fitness, solution1b.fitness, solution1c.fitness, solution1d.fitness)
-        print(most_fit(population, 2)[0].fitness, most_fit(population, 2)[1].fitness)
+        self.assertEqual(most_fit(population, 2)[0].fitness, 176)
+        self.assertEqual(most_fit(population, 2)[1].fitness, 213)
+
 
 
 
