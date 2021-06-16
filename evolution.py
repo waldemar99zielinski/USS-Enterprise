@@ -9,8 +9,9 @@ from evolution_replacement import *
 from generate_intial_population import *
 from randomization import  *
 from solution_data import getSolutionsListFitness
+from population_comparison import are_populations_the_same
 from plots import *
-from SJF import shortest_job_first
+
 
 
 
@@ -36,12 +37,42 @@ def evolutionary_algorithm(init_population, generation_limit, kids_per_generatio
         population = most_fit(population, len(init_population[0].order))
         fitness_log.append(getSolutionsListFitness(population))
 
-        # for s in population:
-        #     print(s.order, s.fitness)
+
 
     return fitness_log
 
+#generation_limit: stop algorithm if no changes in population within generation_limit
+def evolutionary_algorithm_stop(init_population, generation_limit, kids_per_generation, crossover_probability,
+                           mutation_range):
+    population = init_population
+    kids = []
+    fitness_log = []
+    fitness_log.append(getSolutionsListFitness(init_population))
+    no_population_changes_counter = 0
 
+    while no_population_changes_counter < generation_limit:
+        # print("GENERATION: ", x)
+        for _ in range(kids_per_generation):
+            child = None
+
+            if crossover_probability > generate_probability():
+                child = mutate(order_crossover(selection_tournament(population, 2, 5)), mutation_range)
+            else:
+                child = mutate(selection_tournament(population, 1, 5)[0], mutation_range)
+            kids.append(child)
+        population = population + kids
+        kids = []
+        population_to_replace = most_fit(population, len(init_population[0].order))
+
+        # check if there were any changes in population
+        if are_populations_the_same(population, population_to_replace):
+            no_population_changes_counter += 1
+        else:
+            no_population_changes_counter = 0
+        population = population_to_replace
+        fitness_log.append(getSolutionsListFitness(population))
+
+    return fitness_log
 # move later
 # -------------------------------------------------------------------------------
 
