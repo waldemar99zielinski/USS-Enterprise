@@ -7,6 +7,6 @@ from solution_data import *
 # does not modify original list
 def most_fit(specimens, slots):
     staging = sort_solutions(specimens)
-    staging = staging[:slots]
-    return staging
+    sliced_staging = staging[:slots]
+    return sliced_staging
 
