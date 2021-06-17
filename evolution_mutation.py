@@ -1,4 +1,5 @@
 from randomization import *
+from solution_data import *
 
 
 # expects a single object of type SolutionInstance
@@ -9,7 +10,7 @@ def mutate(specimen, mutation_range):
     if size < 2:
         return specimen
     for _ in range(mutation_range):
-        positions = select_from_list(range(0, size-1), 2)
-        #print("positions: ", positions)
+        positions = select_from_list(range(0, size), 2)
         specimen.order[positions[0]], specimen.order[positions[1]] = specimen.order[positions[1]], specimen.order[positions[0]]
+    specimen.calculate_fitness()
     return specimen

@@ -29,7 +29,7 @@ print("SJF started")
 SJF_result = shortest_job_first(progenitor)
 
 print("Evolutionary algorithm started")
-EVO_result = evolutionary_algorithm(starting_population, user_params.generation_limit, user_params.kids_per_generation, user_params.crossover_probability, user_params.mutation_range)
+EVO_result = evolutionary_algorithm_stop(starting_population, user_params.generation_limit, user_params.kids_per_generation, user_params.crossover_probability, user_params.mutation_range)
 
 print("Finished. Results:")
 display_results(SJF_result, EVO_result)
