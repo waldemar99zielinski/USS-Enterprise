@@ -45,7 +45,6 @@ def evolutionary_algorithm_stop(init_population, generation_limit, kids_per_gene
     no_population_changes_counter = 0
 
     while no_population_changes_counter < generation_limit:
-        # print("GENERATION: ", x)
         for _ in range(kids_per_generation):
             child = None
 
