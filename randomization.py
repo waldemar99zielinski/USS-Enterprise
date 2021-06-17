@@ -21,8 +21,8 @@ def generate_probability():
 
 # returns n randomly selected elements from source (no duplicates)
 def select_from_list(source, n):
-    return_value = random.sample(source, n).copy()
-    return return_value
+    return random.sample(source, n)
+
 
 # randomizes order of elements from source (does not modify original)
 def randomize_order(source):
