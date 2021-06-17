@@ -10,12 +10,17 @@ def are_populations_the_same(p1, p2):
     print("population2")
     for x in population2:
         print(x.order)
+
+
+
+    if len(population1) != len(population2):
+        return False
     for i in range(len(population1)):
-        print("population1")
-        print( population1[i].order)
-        print("population2")
-        print(population2[i].order)
-        print(population1[i].order == population2[i].order)
+        # print("population1")
+        # print( population1[i].order)
+        # print("population2")
+        # print(population2[i].order)
+        # print(population1[i].order == population2[i].order)
         if population1[i].order != population2[i].order:
             return False
     return True

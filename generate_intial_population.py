@@ -12,7 +12,12 @@ def generate_init_population(number_of_species, number_of_crewmates, max_cost, m
     init_species = SolutionInstance(generate_crewmates(number_of_crewmates, max_cost))
     for _ in range(number_of_species):
         species = SolutionInstance(mutate(init_species, mutation_range).order)
+        print("gen_init: ", species.order, species.fitness)
         initial_population.append(species)
+        print(initial_population[_].order, initial_population[_].fitness)
+
+    for x in initial_population:
+        print("finale ", x.order, x.fitness)
     return initial_population
 
 
