@@ -111,3 +111,4 @@ def display_results(sjf_value, evolution_solution):
     print("Evolutionary result time is", end=" ")
     print(solution_ratio, end='')
     print("% longer than SJF result.")
+    return solution_ratio
