@@ -46,6 +46,6 @@ for x in range(10):
     percentage_results.append(display_results(SJF_result, EVO_result))
     print("------------------------------------------------------------------")
 
-print("Average quality:", end=" ")
-print(sum(percentage_results)/len(percentage_results), end="")
+print("Average increased duration:", end=" ")
+print(round(sum(percentage_results)/len(percentage_results), 1), end="")
 print("%")
