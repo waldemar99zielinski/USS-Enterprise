@@ -56,15 +56,17 @@ def evolutionary_algorithm_stop(init_population, generation_limit, kids_per_gene
         new_population = population + kids
         kids = []
         population_to_replace = most_fit(new_population, len(init_population[0].order))
-
+        print("new", len(init_population[0].order))
+        print(getSolutionsListFitness(new_population))
+        print(getSolutionsListFitness(population_to_replace))
         # check if there were any changes in population
         if are_populations_the_same(population, population_to_replace):
-            print("increment")
+            # print("increment")
             no_population_changes_counter += 1
         else:
             no_population_changes_counter = 0
         # print("counter: ", no_population_changes_counter)
-        population = population_to_replace
+        population = most_fit(new_population, len(init_population[0].order))
         fitness_log.append(getSolutionsListFitness(population))
 
     return fitness_log
@@ -86,11 +88,11 @@ init_pop = generate_init_population(5, 5, 100, 5)
 for s in init_pop:
     print(s.order, s.fitness)
 
-# log = evolutionary_algorithm_stop(init_pop, 5, 100, 0.5, 2)
+log = evolutionary_algorithm_stop(init_pop, 5, 5, 0.5, 2)
 
 #print(len(log),log)
 
-# get_fitness_scatter_plot(log)
-#get_fitness_average_scatter_plot(log)
+get_fitness_scatter_plot(log)
+get_fitness_average_scatter_plot(log)
 
 #print(shortest_job_first(init_pop[0]))
