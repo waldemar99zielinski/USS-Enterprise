@@ -27,10 +27,13 @@ def evolutionary_algorithm(init_population, generation_limit, kids_per_generatio
             else:
                 child = mutate(selection_tournament(population, 1, 5)[0], mutation_range)
             kids.append(child)
+        print("new")
+        print(sorted(getSolutionsListFitness(population)))
         population = population + kids
         kids = []
         population = most_fit(population, len(init_population[0].order))
         fitness_log.append(getSolutionsListFitness(population))
+        print(sorted(getSolutionsListFitness(population)))
 
     return fitness_log
 
@@ -57,8 +60,8 @@ def evolutionary_algorithm_stop(init_population, generation_limit, kids_per_gene
         kids = []
         population_to_replace = most_fit(new_population, len(init_population[0].order))
         print("new", len(init_population[0].order))
-        print(getSolutionsListFitness(new_population))
-        print(getSolutionsListFitness(population_to_replace))
+        print(sorted(getSolutionsListFitness(population)))
+
         # check if there were any changes in population
         if are_populations_the_same(population, population_to_replace):
             # print("increment")
@@ -67,6 +70,7 @@ def evolutionary_algorithm_stop(init_population, generation_limit, kids_per_gene
             no_population_changes_counter = 0
         # print("counter: ", no_population_changes_counter)
         population = most_fit(new_population, len(init_population[0].order))
+        print(sorted(getSolutionsListFitness(population)))
         fitness_log.append(getSolutionsListFitness(population))
 
     return fitness_log
@@ -80,16 +84,16 @@ def evolutionary_algorithm_stop(init_population, generation_limit, kids_per_gene
 # -------------------------------------------------------------------------------
 
 #initialize_rng(5) #190
-initialize_rng(5)
-init_pop = generate_init_population(5, 5, 100, 5)
+initialize_rng(555)
+init_pop = generate_init_population(100, 100, 100, 2)
 
 
 
 for s in init_pop:
     print(s.order, s.fitness)
 
-log = evolutionary_algorithm_stop(init_pop, 5, 5, 0.5, 2)
-
+# log = evolutionary_algorithm_stop(init_pop, 5, 100, 0.5, 2)
+log = evolutionary_algorithm(init_pop, 1000, 100, 0.2, 2)
 #print(len(log),log)
 
 get_fitness_scatter_plot(log)
