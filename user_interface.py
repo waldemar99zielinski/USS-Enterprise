@@ -97,12 +97,12 @@ def take_user_parameters():
 
 
 # display results and percent comparison
-# sjf_value              -   service time of solution, returned by SJF
+# sjf_value                 -   service time of solution, returned by SJF
 # evolution_solution        -   expects fitness_log returned by evolutionary algorithm
 def display_results(sjf_value, evolution_solution):
     last_pop = evolution_solution[-1]
-    last_pop.sort()
-    evo_value = last_pop[-1]
+    last_pop_sorted = last_pop.sort()
+    evo_value = last_pop_sorted[1]
     solution_ratio = (((evo_value/sjf_value)-1)*100)
     print("Service time of SJF result:", end=" ")
     print(sjf_value)
