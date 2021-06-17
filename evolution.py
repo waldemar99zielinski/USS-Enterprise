@@ -19,21 +19,26 @@ def evolutionary_algorithm(init_population, generation_limit, kids_per_generatio
     fitness_log = []
     fitness_log.append(getSolutionsListFitness(init_population))
     for x in range(generation_limit):
+        print("new")
+        print("population before", sorted(getSolutionsListFitness(population)))
         for _ in range(kids_per_generation):
             child = None
 
             if crossover_probability > generate_probability():
+                print("crossover")
                 child = mutate(order_crossover(selection_tournament(population, 2, 5)), mutation_range)
             else:
                 child = mutate(selection_tournament(population, 1, 5)[0], mutation_range)
             kids.append(child)
-        print("new")
-        print(sorted(getSolutionsListFitness(population)))
+
+        print("population",sorted(getSolutionsListFitness(population)))
         population = population + kids
+        print("population + kids", sorted(getSolutionsListFitness(population)))
         kids = []
-        population = most_fit(population, len(init_population[0].order))
-        fitness_log.append(getSolutionsListFitness(population))
-        print(sorted(getSolutionsListFitness(population)))
+        population = copy.copy(most_fit(population, len(init_population[0].order)))
+        print("most fit", sorted(getSolutionsListFitness(population)))
+        # fitness_log.append(getSolutionsListFitness(population))
+
 
     return fitness_log
 
@@ -51,8 +56,10 @@ def evolutionary_algorithm_stop(init_population, generation_limit, kids_per_gene
             child = None
 
             if crossover_probability > generate_probability():
+                print("crossover")
                 child = mutate(order_crossover(selection_tournament(population, 2, 5)), mutation_range)
             else:
+
                 child = mutate(selection_tournament(population, 1, 5)[0], mutation_range)
             kids.append(child)
 
@@ -85,18 +92,13 @@ def evolutionary_algorithm_stop(init_population, generation_limit, kids_per_gene
 
 #initialize_rng(5) #190
 initialize_rng(555)
-init_pop = generate_init_population(100, 100, 100, 2)
-
-
-
-for s in init_pop:
-    print(s.order, s.fitness)
+init_pop = generate_init_population(5, 5, 100, 2)
 
 # log = evolutionary_algorithm_stop(init_pop, 5, 100, 0.5, 2)
-log = evolutionary_algorithm(init_pop, 1000, 100, 0.2, 2)
+log = evolutionary_algorithm(init_pop, 10, 5, 1, 2)
 #print(len(log),log)
 
-get_fitness_scatter_plot(log)
-get_fitness_average_scatter_plot(log)
+# get_fitness_scatter_plot(log)
+# get_fitness_average_scatter_plot(log)
 
 #print(shortest_job_first(init_pop[0]))
