@@ -10,7 +10,6 @@ def order_crossover(solutions):
     solution_instance2 = solutions[1]
     # order for each solution has the same length
     matching_section_index = generate_random_from_range(len(solution_instance1.order))
-    #print("index: ",matching_section_index)
     # unchanged part of solution
     crossed_solution_order = solution_instance1.order[:matching_section_index]
 

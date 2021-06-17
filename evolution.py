@@ -19,7 +19,6 @@ def evolutionary_algorithm(init_population, generation_limit, kids_per_generatio
     fitness_log = []
     fitness_log.append(getSolutionsListFitness(init_population))
     for x in range(generation_limit):
-        # print("GENERATION: ", x)
         for _ in range(kids_per_generation):
             child = None
 
