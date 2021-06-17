@@ -2,7 +2,7 @@ from random_generation import *
 from solution_data import *
 from evolution_mutation import *
 from randomization import *
-
+import copy
 
 # returns population of solutions that consists number_of_species, each with number_of_crewmates
 # max_cost defines maximum time to serve a crewmate
@@ -11,8 +11,9 @@ def generate_init_population(number_of_species, number_of_crewmates, max_cost, m
     initial_population = []
     init_species = SolutionInstance(generate_crewmates(number_of_crewmates, max_cost))
     for _ in range(number_of_species):
-        species = SolutionInstance(mutate(init_species, mutation_range).order)
+        species = SolutionInstance(copy.copy(mutate(init_species, mutation_range).order))
         initial_population.append(species)
+
     return initial_population
 
 

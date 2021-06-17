@@ -52,15 +52,18 @@ def evolutionary_algorithm_stop(init_population, generation_limit, kids_per_gene
             else:
                 child = mutate(selection_tournament(population, 1, 5)[0], mutation_range)
             kids.append(child)
-        population = population + kids
+
+        new_population = population + kids
         kids = []
-        population_to_replace = most_fit(population, len(init_population[0].order))
+        population_to_replace = most_fit(new_population, len(init_population[0].order))
 
         # check if there were any changes in population
         if are_populations_the_same(population, population_to_replace):
+            print("increment")
             no_population_changes_counter += 1
         else:
             no_population_changes_counter = 0
+        # print("counter: ", no_population_changes_counter)
         population = population_to_replace
         fitness_log.append(getSolutionsListFitness(population))
 
@@ -75,14 +78,15 @@ def evolutionary_algorithm_stop(init_population, generation_limit, kids_per_gene
 # -------------------------------------------------------------------------------
 
 #initialize_rng(5) #190
-#initialize_rng(555)
-#init_pop = generate_init_population(10, 100, 100, 5)
+initialize_rng(5)
+init_pop = generate_init_population(5, 5, 100, 5)
 
 
 
-# for s in init_pop:
-#     print(s.order, s.fitness)
-#log = evolutionary_algorithm(init_pop, 1000, 100, 0.5, 2)
+for s in init_pop:
+    print(s.order, s.fitness)
+
+# log = evolutionary_algorithm_stop(init_pop, 5, 100, 0.5, 2)
 
 #print(len(log),log)
 
