@@ -10,7 +10,7 @@ from generate_intial_population import *
 from randomization import  *
 from solution_data import getSolutionsListFitness
 from population_comparison import are_populations_the_same
-from plots import *
+
 
 def evolutionary_algorithm(init_population, generation_limit, kids_per_generation, crossover_probability, mutation_range):
     population = init_population

@@ -44,7 +44,7 @@ def getmicro(str):
     micro = int(str[8:13])
     time = hours*60*60*(10**6) + min*60*(10**6) + sec*(10**6)+micro
     return time
-print(getmicro(s))
+
 
 
 
