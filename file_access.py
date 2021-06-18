@@ -1,6 +1,3 @@
-# for implementing reading crewmate list from file
-
-
 # reads crewmate list form file
 # expected format is one integer per line
 # returns a list of integers

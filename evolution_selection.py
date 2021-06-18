@@ -1,4 +1,3 @@
-# For implementing selection for reproduction
 from solution_data import *
 from randomization import *
 

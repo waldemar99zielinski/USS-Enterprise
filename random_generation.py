@@ -1,4 +1,3 @@
-# For implementing initial crewmates random generation
 from randomization import *
 
 

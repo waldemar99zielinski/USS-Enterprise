@@ -1,5 +1,3 @@
-# For implementing crossover
-# 1. function for crossover: takes two solution_instance
 from randomization import *
 from solution_data import *
 

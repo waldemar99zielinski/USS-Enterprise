@@ -36,19 +36,12 @@ def get_fitness_average_scatter_plot(log):
     plt.ylabel("Average population fitness")
     plt.show()
 
-s = "0:01:00.000000"
 
 def getmicro(str):
-
-
     hours = int(str[0])
-    # print(hours)
     min = int(str[2:4])
-    # print(min)
     sec = int(str[5:7])
-    # print(sec)
     micro = int(str[8:13])
-    # print(micro)
     time = hours*60*60*(10**6) + min*60*(10**6) + sec*(10**6)+micro
     return time
 print(getmicro(s))
@@ -117,5 +110,4 @@ def get_time_plot():
     plt.xlabel("Crewmates number")
     plt.ylabel("Time in microseconds")
     plt.plot(x,res)
-    # plt.plot(x,sjf_y)
     plt.show()

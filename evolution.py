@@ -67,10 +67,8 @@ def evolutionary_algorithm_stop(init_population, generation_limit, kids_per_gene
         kids = []
         population_to_replace = most_fit(new_population, len(init_population[0].order))
 
-
         # check if there were any changes in population
         if are_populations_the_same(population, population_to_replace):
-            # print("increment")
             no_population_changes_counter += 1
         else:
             no_population_changes_counter = 0
