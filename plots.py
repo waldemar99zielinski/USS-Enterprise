@@ -17,7 +17,6 @@ def get_fitness_scatter_plot(log):
 
     plt.scatter(x, y, s)
     plt.xlabel("Generation")
-    plt.ylabel("Solutions fitness")
     plt.show()
 
 

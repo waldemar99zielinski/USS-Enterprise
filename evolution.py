@@ -34,6 +34,7 @@ def evolutionary_algorithm(init_population, generation_limit, kids_per_generatio
 
         kids = []
         fitness_log.append(getSolutionsListFitness(population))
+        #replace population
         population = most_fit(population, len(init_population[0].order))
 
 
@@ -79,23 +80,3 @@ def evolutionary_algorithm_stop(init_population, generation_limit, kids_per_gene
 
     return fitness_log
 
-
-
-
-
-
-# move later
-# -------------------------------------------------------------------------------
-
-#initialize_rng(5) #190
-initialize_rng(555)
-init_pop = generate_init_population(10, 5, 100, 2)
-
-# log = evolutionary_algorithm_stop(init_pop, 5, 100, 0.5, 2)
-log = evolutionary_algorithm_stop(init_pop, 10, 10, 0.5, 2)
-print("log len",len(log))
-
-# get_fitness_scatter_plot(log)
-get_fitness_average_scatter_plot(log)
-
-# print(shortest_job_first(init_pop[0]))
