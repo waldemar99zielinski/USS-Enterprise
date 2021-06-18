@@ -1,5 +1,5 @@
 import matplotlib.pyplot as plt
-
+from datetime import datetime
 
 
 
@@ -36,5 +36,86 @@ def get_fitness_average_scatter_plot(log):
     plt.ylabel("Average population fitness")
     plt.show()
 
+s = "0:01:00.000000"
+
+def getmicro(str):
 
 
+    hours = int(str[0])
+    # print(hours)
+    min = int(str[2:4])
+    # print(min)
+    sec = int(str[5:7])
+    # print(sec)
+    micro = int(str[8:13])
+    # print(micro)
+    time = hours*60*60*(10**6) + min*60*(10**6) + sec*(10**6)+micro
+    return time
+print(getmicro(s))
+
+
+
+def get_time_plot():
+    x=[]
+    evo_y=[]
+    sjf_y=[]
+    res = []
+    for _ in range(0, 1100, 10):
+        x.append(_)
+
+    file1 = open("evo_time2.txt", "r")
+    file2 = open("sjf_time2.txt", "r")
+    file3 = open("res_diff2.txt", "r")
+    linesF1 = file1.readlines()
+    linesF2 = file2.readlines()
+    linesF3 = file3.readlines()
+    for l in linesF1:
+        evo_y.append(getmicro(l))
+
+    for l in linesF2:
+        sjf_y.append(getmicro(l))
+    for l in linesF3:
+        res.append(float(l))
+    print("1: x len", len(x))
+    print("res len", len(res))
+
+    for _ in range(1250, 1750, 250):
+        x.append(_)
+
+    file1 = open("evo_time3.txt", "r")
+    file2 = open("sjf_time3.txt", "r")
+    file3 = open("res_diff3.txt", "r")
+    linesF1 = file1.readlines()
+    linesF2 = file2.readlines()
+    linesF3 = file3.readlines()
+    for l in linesF1:
+        evo_y.append(getmicro(l))
+    for l in linesF2:
+        sjf_y.append(getmicro(l))
+    for l in linesF3:
+        res.append(float(l))
+    print("2: x len", len(x))
+    print("res len", len(res))
+    x.append(2000)
+
+    file1 = open("evo_time.txt", "r")
+    file2 = open("sjf_time.txt", "r")
+    file3 = open("res_diff.txt", "r")
+    linesF1 = file1.read().splitlines()
+    linesF2 = file2.readlines()
+    linesF3 = file3.readlines()
+    for l in linesF1:
+
+        evo_y.append(getmicro(l))
+    for l in linesF2:
+        sjf_y.append(getmicro(l))
+    for l in linesF3:
+        res.append(float(l))
+    print("x len", len(x))
+    print("3: res len", len(res))
+    plt.title("SJF EVO solution comparison")
+    plt.xlabel("Crewmates number")
+    plt.ylabel("Time in microseconds")
+    plt.plot(x,res)
+    # plt.plot(x,sjf_y)
+    plt.show()
