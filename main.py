@@ -18,6 +18,9 @@ if user_params.rng_seed == "default":
 else:
     initialize_rng(user_params.rng_seed)
 
+if user_params.population_generation_mode != "random":
+    list_from_file = read_crewmates_from_file(user_params.population_generation_mode)
+
 print("")
 print("")
 print("------------------------------------------------------------------")
@@ -29,7 +32,6 @@ for x in range(10):
     print(x+1)
 
     if user_params.population_generation_mode != "random":
-        list_from_file = read_crewmates_from_file(user_params.population_generation_mode)
         progenitor = SolutionInstance(list_from_file)
         starting_population = generate_population_from_progenitor(user_params.population_size, user_params.number_of_crewmates, user_params.maximum_crewmate_cost, user_params.number_of_crewmates, progenitor)
     else:
